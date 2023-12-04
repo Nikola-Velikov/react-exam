@@ -25,13 +25,13 @@ export default function useForm(submitHandler, initialValues) {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        const form = e.currentTarget;
-        if (form.checkValidity() === false) {
+     
+        if (e.currentTarget.checkValidity() === false) {
             setValidated(true);
             return;
         }
 
-        submitHandler(values, e);
+        submitHandler(values);
 
         setValues(initialValues);
     };

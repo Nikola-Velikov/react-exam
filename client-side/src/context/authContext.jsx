@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import { useNavigate } from 'react-router-dom';
 
-//import * as authService from '../services/authService';
+import * as authService from '../services/authService';
 import useSavedState from "../hooks/useSavedState";
 
 const AuthContext = createContext();
@@ -12,7 +12,8 @@ export const AuthProvider = ({
     const navigate = useNavigate();
     const [auth, setAuth] = useSavedState('auth', {});
 
-  /*  const loginSubmitHandler = async (values) => {
+    const loginSubmitHandler = async (values) => {
+        
         const result = await authService.login(values.email, values.password);
 
         setAuth(result);
@@ -31,14 +32,15 @@ export const AuthProvider = ({
 
         navigate('/');
     };
-*/
+
     const logoutHandler = () => {
         setAuth({});
         localStorage.removeItem('accessToken');
     };
 
     const values = {
-        
+        loginSubmitHandler,
+        registerSubmitHandler,
         logoutHandler,
         email: auth.email,
         userId: auth._id,
