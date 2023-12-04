@@ -1,3 +1,4 @@
+const Cars = require("../models/cars");
 const { verifyToken } = require("../services/authService");
 const { getAll, create, getById, update, deleteById, getGamesByUserId } = require("../services/carService");
 const carController = require('express').Router();
@@ -5,6 +6,7 @@ const carController = require('express').Router();
 carController.get('/', async (req, res) => {
  
     try {
+        
         const result = await getAll();
         res.status(200).send({
             success: true,

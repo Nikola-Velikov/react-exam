@@ -1,16 +1,16 @@
-const Car = require("../models/cars");
+const Cars = require("../models/cars");
 //const Comments = require("../models/comments");
 
 async function getAll() {
-    return await Car.find({}).lean();
+    return await Cars.find({});
 }
 
 async function create(boardgame) {
-    return await Car.create(boardgame);
+    return await Cars.create(boardgame);
 }
 
 async function update(id, boardgame) {
-    const existing = await Car.findById(id);
+    const existing = await Cars.findById(id);
 
     if(!existing){
         throw new Error("Boardgame doesn't exist");
@@ -30,18 +30,18 @@ async function update(id, boardgame) {
 }
 
 async function getById(id) {
-    const boardgame = await Car.findById(id).lean();
+    const boardgame = await Cars.findById(id).lean();
     boardgame.comments = await Comments.find({ boardgameId: id}).lean();
     return boardgame;
 }
 
 async function deleteById(id) {
-    await Car.findOneAndDelete({ _id: id });
+    await Cars.findOneAndDelete({ _id: id });
    // return await Comments.deleteMany({ boardgameId: id});
 }
 
 async function getGamesByUserId(id) {
-    return await Car.find({ owner: id }).lean();
+    return await Cars.find({ owner: id }).lean();
 }
 module.exports = {
     create,
