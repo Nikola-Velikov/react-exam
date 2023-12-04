@@ -9,30 +9,32 @@ async function create(boardgame) {
     return await Cars.create(boardgame);
 }
 
-async function update(id, boardgame) {
+async function update(id, offer) {
     const existing = await Cars.findById(id);
 
     if(!existing){
         throw new Error("Boardgame doesn't exist");
     }
 
-    existing.name = boardgame.name;
-    existing.description = boardgame.description;
-    existing.minage = boardgame.minage;
-    existing.gameduration = boardgame.gameduration;
-    existing.minplayers = boardgame.minplayers;
-    existing.maxplayers = boardgame.maxplayers;
-    if(boardgame.imageUrl) {
-        existing.imageUrl = boardgame.imageUrl;
-    }
+    existing.model = offer.model;
+    existing.description = offer.description;
+    existing.fuel = offer.fuel;
+    existing.price = offer.price;
+    existing.mileage = offer.mileage;
+    existing.color = offer.color;
+    existing.seats = offer.seats;
+    existing.telephone = offer.telephone;
+   
+    existing.carImage = offer.carImage;
+    
 
     return await existing.save();
 }
 
 async function getById(id) {
-    const boardgame = await Cars.findById(id).lean();
-    boardgame.comments = await Comments.find({ boardgameId: id}).lean();
-    return boardgame;
+    const offer = await Cars.findById(id).lean();
+    //boardgame.comments = await Comments.find({ boardgameId: id}).lean();
+    return offer;
 }
 
 async function deleteById(id) {

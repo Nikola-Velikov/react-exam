@@ -31,8 +31,19 @@ export const create = async (formData) => {
     return res;
 }
 
-export const update = async (id, car) => {
-    const res = await request.post(baseUrl + '/' + id + '/edit', car);
+export const update = async (id, formData) => {
+    console.log(formData);
+    const res = await request.post(baseUrl + '/' + id + '/edit', {
+        model: formData.get('model'),
+        price: formData.get('price'),
+        mileage: formData.get('mileage'),
+        color: formData.get('color'),
+        carImage: formData.get('carImage'),
+        description: formData.get('description'),
+        fuel: formData.get('fuel'),
+        telephone:formData.get('telephone'),
+        seats:formData.get('seats'),
+    });
     return res;
 }
 

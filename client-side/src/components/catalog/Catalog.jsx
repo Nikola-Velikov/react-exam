@@ -28,12 +28,16 @@ export function Catalog() {
           </div>
         </div>
       </div>
+      {cars.length === 0 && (
+            <h3 className="fst-italic text-secondary fs-5" style={{textAlign:'center'}}>No offers avaliable</h3>
+        )}
       <div className="services">
         <div className="container">
           <div className="row">
             {cars.map(car => (
               <CarOffer key={car._id} {...car}></CarOffer>
             ))}
+          
           </div>
         </div>
       </div>

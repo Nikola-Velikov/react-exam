@@ -10,6 +10,8 @@ import { AuthProvider } from "./context/authContext";
 import { Navbar } from "react-bootstrap";
 import Logout from "./components/logout/Logout";
 import Create from "./components/create/Create";
+import { Details } from "./components/details/Details";
+import { Edit } from "./components/edit/Edit";
 function App() {
   return (
     <>
@@ -31,7 +33,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/create" element={<Create />} />
-
+        <Route path="/catalog/:id" element={<Details />} />
+        <Route path="/catalog/:id/edit" element={<Edit />} />
       </Routes>
       <Footer />
       </AuthProvider>

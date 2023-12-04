@@ -92,13 +92,16 @@ carController.post('/:id/edit', async (req, res) => {
         const token = req.headers["x-authorization"];
         verifyToken(token);
         const payload = {
-            name: req.body.name,
-            minage: req.body.minage,
-            gameduration: req.body.gameduration,
-            minplayers: req.body.minplayers,
-            maxplayers: req.body.maxplayers,
+            model: req.body.model,
+            price: req.body.price,
+            mileage: req.body.mileage,
+            color: req.body.color,
+            carImage: req.body.carImage,
             description: req.body.description,
-            imageUrl: req.file? req.file.filename : null,
+            fuel: req.body.fuel,
+            telephone:req.body.telephone,
+            seats:req.body.seats,
+            
         }
         const result = await update(req.params.id, payload);
         res.status(200).send({
