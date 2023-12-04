@@ -5,8 +5,8 @@ export function Footer() {
         <div className="row">
           <div className="col-md-12">
             <p>
-              Copyright © 2020 Company Name - Template by:{" "}
-              <a href="https://www.phpjabbers.com/">PHPJabbers.com</a>
+              Copyright © 2023 Car Shopy
+              
             </p>
           </div>
         </div>
