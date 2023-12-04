@@ -53,6 +53,13 @@ export function Navbar() {
                   </Link>
                 </li>
               )}
+            {isAuthenticated && (
+              <li className="nav-item">
+              <Link to={"/logout"} className="nav-link">
+                Logout
+              </Link>
+            </li>
+            )}
             </ul>
             {!isAuthenticated && (
               <Button to={"/register"} className="btn btn-dark ms-2" as={Link}>
