@@ -5,6 +5,7 @@ import { Footer } from "./components/footer/Footer";
 import { AboutUs } from "./components/aboutUs/AboutUs";
 import { Catalog } from "./components/catalog/Catalog";
 import Login from "./components/login/Login";
+import Register from './components/register/Register'
 import { AuthProvider } from "./context/authContext";
 import { Navbar } from "react-bootstrap";
 function App() {
@@ -25,7 +26,7 @@ function App() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/catalog" element={<Catalog />} />
         <Route path="/login" element={<Login />} />
-
+        <Route path="/register" element={<Register />} />
 
       </Routes>
       <Footer />

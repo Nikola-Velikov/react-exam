@@ -1,59 +1,64 @@
 import { createContext } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-import * as authService from '../services/authService';
+import * as authService from "../services/authService";
 import useSavedState from "../hooks/useSavedState";
 
 const AuthContext = createContext();
 
-export const AuthProvider = ({
-    children,
-}) => {
-    const navigate = useNavigate();
-    const [auth, setAuth] = useSavedState('auth', {});
+export const AuthProvider = ({ children }) => {
+  const navigate = useNavigate();
+  const [auth, setAuth] = useSavedState("auth", {});
 
-    const loginSubmitHandler = async (values) => {
-        
-        const result = await authService.login(values.email, values.password);
+  const loginSubmitHandler = async (values) => {
+    const result = await authService.login(values.email, values.password);
 
-        setAuth(result);
+    setAuth(result);
 
-        localStorage.setItem('accessToken', result.accessToken);
+    localStorage.setItem("accessToken", result.token);
 
-        navigate('/');
-    };
+    navigate("/");
+  };
 
-    const registerSubmitHandler = async (values) => {
-        const result = await authService.register(values.email, values.password);
+  const registerSubmitHandler = async (values) => {
+    try {
+      if (values.password !== values.repeatPassword) {
+        throw new Error("Passwords must match!");
+      }
+      console.log(values.username, values.email, values.password);
+      const result = await authService.register({
+        username: values.username,
+        email: values.email,
+        password: values.password,
+      });
 
-        setAuth(result);
+      setAuth(result);
 
-        localStorage.setItem('accessToken', result.accessToken);
+      localStorage.setItem("accessToken", result.token);
 
-        navigate('/');
-    };
+      navigate("/");
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
-    const logoutHandler = () => {
-        setAuth({});
-        localStorage.removeItem('accessToken');
-    };
+  const logoutHandler = () => {
+    setAuth({});
+    localStorage.removeItem("accessToken");
+  };
 
-    const values = {
-        loginSubmitHandler,
-        registerSubmitHandler,
-        logoutHandler,
-        email: auth.email,
-        userId: auth._id,
-        isAuthenticated: !!auth.accessToken,
-    };
+  const values = {
+    loginSubmitHandler,
+    registerSubmitHandler,
+    logoutHandler,
+    email: auth.email,
+    userId: auth._id,
+    isAuthenticated: !!auth.token,
+  };
 
-    return (
-        <AuthContext.Provider value={values}>
-            {children}
-        </AuthContext.Provider>
-    );
+  return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
 
-AuthContext.displayName = 'AuthContext';
+AuthContext.displayName = "AuthContext";
 
 export default AuthContext;

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const CONNECTION_STRING = 'mongodb://127.0.0.1:27017/boardgames';
+const CONNECTION_STRING = 'mongodb://127.0.0.1:27017/carShopy';
 
 module.exports = async function(app) {
     try{

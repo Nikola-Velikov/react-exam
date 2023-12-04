@@ -3,7 +3,7 @@ const authContoller = require('express').Router();
 
 
 authContoller.post('/register', async function (req, res) {
-    console.log('POST /register');
+    console.log('POST /register',req.body);
     try {
         const payload = {
             email: req.body.email,

@@ -33,6 +33,7 @@ const request = async (method, url, data, isDataFormData) => {
     const result = await response.json();
     
     if (!result.success) {
+        alert(result.error);
         throw result.error;
     } 
 

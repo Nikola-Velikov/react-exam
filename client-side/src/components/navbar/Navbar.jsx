@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { Button, NavLink } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/authContext";
 
 export function Navbar() {
+  const { isAuthenticated, username, userId } = useContext(AuthContext);
   return (
     <header className="">
       <nav className="navbar navbar-expand-lg">
@@ -45,12 +46,19 @@ export function Navbar() {
               <li className="nav-item">
                 <a className="nav-link">Blog</a>
               </li>
-              <li className="nav-item">
-                <Link to={'/login'} className="nav-link">Login</Link>
-              </li>
+              {!isAuthenticated && (
+                <li className="nav-item">
+                  <Link to={"/login"} className="nav-link">
+                    Login
+                  </Link>
+                </li>
+              )}
             </ul>
-           
-								<Button to={"/register"} className='btn btn-dark ms-2' as={Link}>Register</Button>
+            {!isAuthenticated && (
+              <Button to={"/register"} className="btn btn-dark ms-2" as={Link}>
+                Register
+              </Button>
+            )}
           </div>
         </div>
       </nav>
