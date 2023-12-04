@@ -21,6 +21,7 @@ const buildOptions = (data, isDataFormData) => {
 };
 
 const request = async (method, url, data, isDataFormData) => {
+    
     const response = await fetch(url, {
         ...buildOptions(data, isDataFormData),
         method,

@@ -15,12 +15,7 @@ export default function useForm(submitHandler, initialValues) {
         }));
     };
 
-    const onFileChange = (e) => {
-        setValues(state => ({ 
-            ...state,
-            [e.target.name]: e.target.files[0]
-        }));
-    }
+
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -41,6 +36,6 @@ export default function useForm(submitHandler, initialValues) {
         onChange,
         onSubmit,
         validated,
-        onFileChange
+        
     }
 }

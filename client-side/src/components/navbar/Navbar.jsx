@@ -53,7 +53,15 @@ export function Navbar() {
                   </Link>
                 </li>
               )}
+              {isAuthenticated && (
+                <li className="nav-item">
+                <Link to={"/create"} className="nav-link">
+                  Create
+                </Link>
+              </li>
+              )}
             {isAuthenticated && (
+              
               <li className="nav-item">
               <Link to={"/logout"} className="nav-link">
                 Logout
