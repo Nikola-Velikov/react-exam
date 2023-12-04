@@ -1,13 +1,17 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import * as carService from "../../services/carService";
-import { useContext, useEffect, useState } from "react";
-import { Pencil, Trash } from "react-bootstrap-icons";
 import AuthContext from "../../context/authContext";
-import { Button, Modal } from "react-bootstrap";
+import useForm from "../../hooks/useForm";
+
+import { Pencil, Trash } from "react-bootstrap-icons";
+import { useContext, useEffect, useState } from "react";
+import { Button, Form, Modal } from "react-bootstrap";
+import { Comment } from "./comment/Comment";
+
 export function Details() {
   const user = useContext(AuthContext);
   const { id } = useParams();
-  const [offer, setOffer] = useState({});
+  const [offer, setOffer] = useState({comments:[]});
   const navigate = useNavigate();
 
   const [show, setShow] = useState(false);
@@ -22,7 +26,37 @@ export function Details() {
       })
       .catch((err) => {});
   }, []);
+  const commentSubmitHandler = async (values) => {
+    try {
+      const comment = await carService.createComment(id, values);
 
+      setOffer((current) => ({
+        ...current,
+        comments: [...current.comments, comment],
+      }));
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+  console.log(offer);
+  const { values, onChange, onSubmit, validated } = useForm(
+    commentSubmitHandler,
+    {
+      content: "",
+    }
+  );
+  const commentDeleteHandler = async (id) => {
+    try {
+        await carService.deleteComment(id);
+      
+        setOffer(current => ({
+            ...current,
+            comments: current.comments.filter(el => el._id != id)
+        }))
+    } catch (err) {
+        console.log(err.message);
+    }
+}
   const deleteOfferHandler = () => {
     carService
       .deleteOffer(id)
@@ -147,19 +181,67 @@ export function Details() {
           <br />
         </div>
       </div>
+      <h2 className="ms-5">Comment Section</h2>
+      <section className="comment-section ms-3 mb-3 pt-3">
+        <Form
+          className="mb-3"
+          onSubmit={onSubmit}
+          validated={validated}
+          noValidate
+        >
+          <Form.Group className="mb-3">
+            <Form.Control
+              as="textarea"
+              rows={3}
+              placeholder="Place your comment.... "
+              name="content"
+              onChange={onChange}
+              value={values.content}
+              required
+            />
+            <Form.Control.Feedback type="invalid">
+              Please fill out this field.
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Button variant="dark" type="submit">
+            Comment
+          </Button>
+        </Form>
+        {offer.comments.length === 0 ? (
+          <i>
+            <h3>No comments yet. Be the first one!</h3>
+          </i>
+        ) : (
+          ""
+        )}
+        {offer.comments.map((comment) => (
+          <Comment
+            comment={comment}
+            commentDeleteHandler={commentDeleteHandler}
+            userId={user.userId}
+            key={comment._id}
+          />
+        ))}
+      </section>
 
       <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Are you sure?</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Are you sure? All the data for this board game will be permanently deleted! There is no going back!</Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Cancel
-                    </Button>
-                    <Button variant="danger" onClick={deleteOfferHandler}><Trash className="me-2" />Delete</Button>
-                </Modal.Footer>
-            </Modal>
+        <Modal.Header closeButton>
+          <Modal.Title>Are you sure?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Are you sure? All the data for this board game will be permanently
+          deleted! There is no going back!
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={deleteOfferHandler}>
+            <Trash className="me-2" />
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }

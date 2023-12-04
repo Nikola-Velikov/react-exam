@@ -57,7 +57,7 @@ export const deleteOffer = async (id) => {
     return res;
 }
 
-export const comment = async (id, values) => {
+export const createComment = async (id, values) => {
     const res = await request.post(baseUrl + '/comment/' + id, values);
     return res;
 }

@@ -1,4 +1,5 @@
 const Cars = require("../models/cars");
+const Comments = require("../models/comments");
 //const Comments = require("../models/comments");
 
 async function getAll() {
@@ -33,7 +34,7 @@ async function update(id, offer) {
 
 async function getById(id) {
     const offer = await Cars.findById(id).lean();
-    //boardgame.comments = await Comments.find({ boardgameId: id}).lean();
+    offer.comments = await Comments.find({ offerId: id}).lean();
     return offer;
 }
 
