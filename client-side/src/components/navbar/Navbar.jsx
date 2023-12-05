@@ -43,9 +43,7 @@ export function Navbar() {
                   About Us
                 </Link>
               </li>
-              <li className="nav-item">
-                <a className="nav-link">Blog</a>
-              </li>
+              
               {!isAuthenticated && (
                 <li className="nav-item">
                   <Link to={"/login"} className="nav-link">

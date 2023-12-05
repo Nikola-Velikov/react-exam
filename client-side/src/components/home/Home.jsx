@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Home() {
   return (
     <>
@@ -17,9 +19,9 @@ export default function Home() {
                   molestiae optio, laudantium odio quod rerum maiores, omnis
                   unde quae illo.
                 </p>
-                <a href="cars.html" className="filled-button">
+                <Link to={'/catalog'} className="filled-button">
                   Cars
-                </a>
+                </Link>
               </div>
             </div>
           </div>

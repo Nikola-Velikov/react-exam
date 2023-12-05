@@ -85,7 +85,7 @@ export default function Create() {
             required style={{ width: "40rem", margin: "0 auto" }}
             
           />
-          <Form.Control.Feedback type="invalid">
+          <Form.Control.Feedback style={{ textAlign: "center" }} type="invalid">
             Choose a model.
           </Form.Control.Feedback>
         </Form.Group>
@@ -100,7 +100,7 @@ export default function Create() {
             value={values.price}
             required style={{ width: "40rem", margin: "0 auto" }}
           />
-          <Form.Control.Feedback type="invalid">
+          <Form.Control.Feedback style={{ textAlign: "center" }} type="invalid">
             Choose a price.
           </Form.Control.Feedback>
         </Form.Group>
@@ -115,7 +115,7 @@ export default function Create() {
             value={values.mileage}
             required style={{ width: "40rem", margin: "0 auto" }}
           />
-          <Form.Control.Feedback type="invalid">
+          <Form.Control.Feedback style={{ textAlign: "center" }} type="invalid">
             Choose a mileage.
           </Form.Control.Feedback>
         </Form.Group>
@@ -129,7 +129,7 @@ export default function Create() {
             value={values.fuel}
             required style={{ width: "40rem", margin: "0 auto" }}
           />
-          <Form.Control.Feedback type="invalid">
+          <Form.Control.Feedback style={{ textAlign: "center" }} type="invalid">
             Choose a fuel.
           </Form.Control.Feedback>
         </Form.Group>
@@ -144,7 +144,7 @@ export default function Create() {
             value={values.seats}
             required style={{ width: "40rem", margin: "0 auto" }}
           />
-          <Form.Control.Feedback type="invalid">
+          <Form.Control.Feedback style={{ textAlign: "center" }} type="invalid">
             Choose a seats.
           </Form.Control.Feedback>
         </Form.Group>
@@ -158,7 +158,7 @@ export default function Create() {
             value={values.color}
             required style={{ width: "40rem", margin: "0 auto" }}
           />
-          <Form.Control.Feedback type="invalid">
+          <Form.Control.Feedback style={{ textAlign: "center" }} type="invalid">
             Choose a color.
           </Form.Control.Feedback>
         </Form.Group>
@@ -172,7 +172,7 @@ export default function Create() {
             value={values.description}
             required style={{ width: "40rem", margin: "0 auto" }}
           />
-          <Form.Control.Feedback type="invalid">
+          <Form.Control.Feedback style={{ textAlign: "center" }} type="invalid">
             Provide a description.
           </Form.Control.Feedback>
         </Form.Group>
@@ -186,7 +186,7 @@ export default function Create() {
             value={values.telephone}
             required style={{ width: "40rem", margin: "0 auto" }}
           />
-          <Form.Control.Feedback type="invalid">
+          <Form.Control.Feedback style={{ textAlign: "center" }} type="invalid">
             Provide a telephone.
           </Form.Control.Feedback>
         </Form.Group>
@@ -200,7 +200,7 @@ export default function Create() {
             value={values.carImage}
             required style={{ width: "40rem", margin: "0 auto" }}
           />
-          <Form.Control.Feedback type="invalid">
+          <Form.Control.Feedback style={{ textAlign: "center" }} type="invalid">
             Provide a car image.
           </Form.Control.Feedback>
         </Form.Group>

@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import * as carService from "../../services/carService";
 import { CarOffer } from "./carOffer/carOffer";
+import AuthContext from "../../context/authContext";
 
 export function Catalog() {
   const [cars, setCars] = useState([]);
+  const { isAuthenticated, username, userId } = useContext(AuthContext);
 
   useEffect(() => {
     const getAll = async () => {
