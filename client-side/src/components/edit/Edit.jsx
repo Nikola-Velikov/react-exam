@@ -193,13 +193,12 @@ export function Edit(){
             onChange={onFileChange}
             required
           />
-<<<<<<< HEAD
-          <Form.Control.Feedback type="invalid">
-            Provide a new image.
-=======
+
+          
+
           <Form.Control.Feedback style={{ textAlign: "center" }} type="invalid">
             Provide a car image.
->>>>>>> 7df0df8b4e236fe3f38b49bbe4a10ecadc54a51c
+
           </Form.Control.Feedback>
         </Form.Group>
         <Button variant="dark" type="submit" style={{display:'flex', margin:'0 auto'}}>
@@ -211,5 +210,4 @@ export function Edit(){
 
     </>
     )
-   
-}
+   }
