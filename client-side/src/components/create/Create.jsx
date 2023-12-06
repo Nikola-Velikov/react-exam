@@ -16,7 +16,7 @@ export default function Create() {
       formData.append("fuel", values.fuel);
       formData.append("seats", values.seats);
       formData.append("description", values.description);
-      formData.append("carImage", values.carImage);
+      formData.append("image", values.image);
       formData.append("color", values.color);
       formData.append("telephone", values.telephone);
 
@@ -29,7 +29,7 @@ export default function Create() {
     }
   };
 
-  const { onChange, onSubmit, values, validated } = useForm(
+  const { onChange, onSubmit, values, validated, onFileChange } = useForm(
     createCarOfferSubmitHandler,
     {
       model: "",
@@ -40,7 +40,7 @@ export default function Create() {
       color: "",
       description: "",
       telephone: "",
-      carImage: '',
+      image: '',
     }
   );
 
@@ -190,18 +190,17 @@ export default function Create() {
             Provide a telephone.
           </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="createFormName">
-          <Form.Label style={{ textAlign: "center", display: "block" }}>car image</Form.Label>
+        <Form.Group className="mb-3">
+          <Form.Label>Image</Form.Label>
           <Form.Control
-            type="text"
-            placeholder="Enter car image"
-            name="carImage"
-            onChange={onChange}
-            value={values.carImage}
-            required style={{ width: "40rem", margin: "0 auto" }}
+            type="file"
+            placeholder="Enter Url"
+            name="image"
+            onChange={onFileChange}
+            required
           />
           <Form.Control.Feedback type="invalid">
-            Provide a car image.
+            Provide a image.
           </Form.Control.Feedback>
         </Form.Group>
         <Button variant="dark" type="submit" style={{display:'flex', margin:'0 auto'}}>

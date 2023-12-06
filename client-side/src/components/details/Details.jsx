@@ -26,6 +26,7 @@ export function Details() {
       })
       .catch((err) => {});
   }, []);
+  
   const commentSubmitHandler = async (values) => {
     try {
       const comment = await carService.createComment(id, values);
@@ -65,9 +66,10 @@ export function Details() {
   };
   return (
     <>
+    
       <div
         className="page-heading header-text"
-        style={{ backgroundImage: `url(${offer.carImage})` }}
+        style={{ backgroundImage: `url('http://localhost:3000/uploads/${offer.carImage}')` }}
       >
         <div className="container">
           <div className="row">

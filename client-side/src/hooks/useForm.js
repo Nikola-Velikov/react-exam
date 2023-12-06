@@ -4,6 +4,7 @@ export default function useForm(submitHandler, initialValues, isLate) {
     const [values, setValues] = useState(initialValues);
     const [validated, setValidated] = useState(false);
 
+
     useEffect(() => {
         setValues(initialValues);
     }, isLate ? [initialValues] : []);
@@ -14,7 +15,14 @@ export default function useForm(submitHandler, initialValues, isLate) {
             [e.target.name]: e.target.value
         }));
     };
-
+    const onFileChange = (e) => {
+       
+        setValues(state => ({ 
+            ...state,
+            [e.target.name]: e.target.files[0]
+        }));
+        console.log(values);
+    }
 
 
     const onSubmit = (e) => {
@@ -36,6 +44,6 @@ export default function useForm(submitHandler, initialValues, isLate) {
         onChange,
         onSubmit,
         validated,
-        
+        onFileChange
     }
 }

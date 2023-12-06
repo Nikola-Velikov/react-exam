@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import AuthContext from "../../../context/authContext";
 
 export function CarOffer({
     _id,
@@ -13,6 +15,7 @@ export function CarOffer({
     seats,
     telephone
 }){
+  const { isAuthenticated } = useContext(AuthContext);
     
     return(
         <div className="col-md-4">
@@ -33,9 +36,10 @@ export function CarOffer({
                     &nbsp;&nbsp;&nbsp;
                     
                   </p>
+                  {isAuthenticated  &&(
                   <Link to={'/catalog/'+_id}  className="filled-button">
                     View More
-                  </Link>
+                  </Link>)}
                 </div>
               </div>
               <br />

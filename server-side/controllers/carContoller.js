@@ -2,6 +2,19 @@ const Cars = require("../models/cars");
 const { verifyToken } = require("../services/authService");
 const { getAll, create, getById, update, deleteById, getGamesByUserId } = require("../services/carService");
 const carController = require('express').Router();
+const multer = require('multer');
+const path = require('path');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({ storage: storage });
 
 carController.get('/', async (req, res) => {
  
@@ -38,7 +51,7 @@ carController.get('/user/:id', async (req, res) => {
     }
 })
 
-carController.post('/create', async (req, res) => {
+carController.post('/create',upload.single('image') ,async (req, res) => {
     console.log('create',req.body);
     try {
         const token = req.headers["x-authorization"];
@@ -48,7 +61,7 @@ carController.post('/create', async (req, res) => {
             price: req.body.price,
             mileage: req.body.mileage,
             color: req.body.color,
-            carImage: req.body.carImage,
+            carImage: req.file.filename,
             description: req.body.description,
             fuel: req.body.fuel,
             telephone:req.body.telephone,
@@ -86,24 +99,26 @@ carController.get('/:id', async (req, res) => {
     }
 })
 
-carController.post('/:id/edit', async (req, res) => {
-    console.log('POST /games/:id/edit', req.body);
+carController.post('/:id/edit',upload.single('image') ,async (req, res) => {
+    console.log('POST /games/:id/edit',req.body);
     try {
         const token = req.headers["x-authorization"];
-        verifyToken(token);
+        const user = verifyToken(token)
         const payload = {
             model: req.body.model,
             price: req.body.price,
             mileage: req.body.mileage,
             color: req.body.color,
-            carImage: req.body.carImage,
+            carImage: req.file.filename,
             description: req.body.description,
             fuel: req.body.fuel,
             telephone:req.body.telephone,
             seats:req.body.seats,
-            
+            owner: user._id,
+          
         }
-        const result = await update(req.params.id, payload);
+        console.log(payload);
+        const result = await update(req.params.id,payload);
         res.status(200).send({
             success: true,
             result: result

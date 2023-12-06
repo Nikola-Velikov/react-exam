@@ -25,24 +25,27 @@ export function Edit(){
           formData.append("fuel", values.fuel);
           formData.append("seats", values.seats);
           formData.append("description", values.description);
-          formData.append("carImage", values.carImage);
+          formData.append("image", values.image);
           formData.append("color", values.color);
           formData.append("telephone", values.telephone);
     
           console.log(formData);
+         
           await carService.update(id,formData);
-    
+          
           navigate("/catalog/"+id);
         } catch (err) {
           console.log(err.message);
         }
       };
-    const { values, onChange, onSubmit, validated } = useForm(editCarOfferSubmitHandler,offer,true);
+    const { values, onChange, onSubmit, validated, onFileChange } = useForm(editCarOfferSubmitHandler,offer,true);
+    console.log(offer);
     return(
       <>
       <div
         className="page-heading header-text"
-        style={{backgroundImage:`url(${offer.carImage})`}}
+        style={{ backgroundImage: `url('http://localhost:3000/uploads/${offer.carImage}')` }}
+
       >
         <div className="container" >
           <div className="row">
@@ -181,18 +184,17 @@ export function Edit(){
             Provide a telephone.
           </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="createFormName">
-          <Form.Label style={{ textAlign: "center", display: "block" }}>car image</Form.Label>
+        <Form.Group className="mb-3">
+          <Form.Label> New Image</Form.Label>
           <Form.Control
-            type="text"
-            placeholder="Enter car image"
-            name="carImage"
-            onChange={onChange}
-            value={values.carImage}
-            required style={{ width: "40rem", margin: "0 auto" }}
+            type="file"
+            placeholder="Enter Url"
+            name="image"
+            onChange={onFileChange}
+            required
           />
           <Form.Control.Feedback type="invalid">
-            Provide a car image.
+            Provide a new image.
           </Form.Control.Feedback>
         </Form.Group>
         <Button variant="dark" type="submit" style={{display:'flex', margin:'0 auto'}}>

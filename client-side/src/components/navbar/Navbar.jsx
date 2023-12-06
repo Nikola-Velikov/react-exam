@@ -9,11 +9,11 @@ export function Navbar() {
     <header className="">
       <nav className="navbar navbar-expand-lg">
         <div className="container">
-          <a className="navbar-brand" href="index.html">
+          <Link to={'/'} className="navbar-brand">
             <h2>
               Car<em> Shopy</em>
             </h2>
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -44,7 +44,7 @@ export function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link">Blog</a>
+                <Link to={'/blog'} className="nav-link">Blog</Link>
               </li>
               {!isAuthenticated && (
                 <li className="nav-item">
@@ -74,6 +74,7 @@ export function Navbar() {
                 Register
               </Button>
             )}
+             
           </div>
         </div>
       </nav>

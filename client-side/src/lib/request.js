@@ -21,12 +21,12 @@ const buildOptions = (data, isDataFormData) => {
 };
 
 const request = async (method, url, data, isDataFormData) => {
-    
+    console.log(buildOptions(data, isDataFormData))
     const response = await fetch(url, {
         ...buildOptions(data, isDataFormData),
         method,
     });
-
+console.log(response);
     if (response.status === 204) {
         return {};
     }

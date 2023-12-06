@@ -14,8 +14,9 @@ async function update(id, offer) {
     const existing = await Cars.findById(id);
 
     if(!existing){
-        throw new Error("Boardgame doesn't exist");
+        throw new Error("Car offer doesn't exist");
     }
+
 
     existing.model = offer.model;
     existing.description = offer.description;
@@ -25,9 +26,8 @@ async function update(id, offer) {
     existing.color = offer.color;
     existing.seats = offer.seats;
     existing.telephone = offer.telephone;
-   
+   console.log(offer);
     existing.carImage = offer.carImage;
-    
 
     return await existing.save();
 }
