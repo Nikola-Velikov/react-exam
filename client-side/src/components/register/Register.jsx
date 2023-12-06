@@ -55,7 +55,7 @@ function Register() {
               required
               style={{ width: "40rem", margin: "0 auto" }}
             />
-            <Form.Control.Feedback type="invalid">
+            <Form.Control.Feedback style={{ textAlign: "center" }} type="invalid">
               Please write a valid username
             </Form.Control.Feedback>
           </Form.Group>
@@ -73,7 +73,7 @@ function Register() {
               style={{ width: "40rem", margin: "0 auto" }}
               required
             />
-            <Form.Control.Feedback type="invalid">
+            <Form.Control.Feedback style={{ textAlign: "center" }} type="invalid">
               Please write a valid email address
             </Form.Control.Feedback>
           </Form.Group>
@@ -90,7 +90,7 @@ function Register() {
               style={{ width: "40rem", margin: "0 auto" }}
               required
             />
-            <Form.Control.Feedback type="invalid">
+            <Form.Control.Feedback style={{ textAlign: "center" }} type="invalid">
               Please write a valid password
             </Form.Control.Feedback>
           </Form.Group>
@@ -107,7 +107,7 @@ function Register() {
               value={values.repeatPassword}
               required
             />
-            <Form.Control.Feedback type="invalid">
+            <Form.Control.Feedback style={{ textAlign: "center" }} type="invalid">
               Please write a valid password
             </Form.Control.Feedback>
           </Form.Group>
