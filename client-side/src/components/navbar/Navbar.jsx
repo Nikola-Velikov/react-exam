@@ -43,13 +43,13 @@ export function Navbar() {
                   About Us
                 </Link>
               </li>
-<<<<<<< HEAD
+
               <li className="nav-item">
                 <Link to={'/blog'} className="nav-link">Blog</Link>
               </li>
-=======
+
               
->>>>>>> 7df0df8b4e236fe3f38b49bbe4a10ecadc54a51c
+
               {!isAuthenticated && (
                 <li className="nav-item">
                   <Link to={"/login"} className="nav-link">

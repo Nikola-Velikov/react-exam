@@ -15,11 +15,9 @@ export function CarOffer({
     seats,
     telephone
 }){
-<<<<<<< HEAD
-  const { isAuthenticated } = useContext(AuthContext);
-=======
+
   const { isAuthenticated, username, userId } = useContext(AuthContext);
->>>>>>> 7df0df8b4e236fe3f38b49bbe4a10ecadc54a51c
+
     
     return(
         <div className="col-md-4">
@@ -40,11 +38,11 @@ export function CarOffer({
                     &nbsp;&nbsp;&nbsp;
                     
                   </p>
-<<<<<<< HEAD
-                  {isAuthenticated  &&(
-=======
+
+                  
+
                   {isAuthenticated&&(
->>>>>>> 7df0df8b4e236fe3f38b49bbe4a10ecadc54a51c
+
                   <Link to={'/catalog/'+_id}  className="filled-button">
                     View More
                   </Link>)}
