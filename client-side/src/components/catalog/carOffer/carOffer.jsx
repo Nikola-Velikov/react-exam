@@ -22,7 +22,7 @@ export function CarOffer({
     return(
         <div className="col-md-4">
               <div className="service-item">
-                <img src={carImage} alt="" style={{height:'400px'}} />
+                <img src={`http://localhost:3000/uploads/${carImage}`} alt="" style={{height:'400px'}} />
                 <div className="down-content">
                   <h4>{model}</h4>
                   <div style={{ marginBottom: 10 }}>

@@ -13,6 +13,7 @@ import Create from "./components/create/Create";
 import { Details } from "./components/details/Details";
 import { Edit } from "./components/edit/Edit";
 import { Blog } from "./components/blog/Blog";
+import { BlogDetails } from "./components/blogDetails/BlogDetails";
 function App() {
   return (
     <>
@@ -37,6 +38,8 @@ function App() {
         <Route path="/catalog/:id" element={<Details />} />
         <Route path="/catalog/:id/edit" element={<Edit />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:id" element={<BlogDetails />} />
+
 
       </Routes>
       <Footer />

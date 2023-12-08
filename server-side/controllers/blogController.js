@@ -64,11 +64,13 @@ blogController.get('/:id', async (req, res) => {
     console.log('GET /games/:id');
     try {
         const token = req.headers["x-authorization"];
-        verifyToken(token);
-        const result = await getById(req.params.id);
+       let user =  verifyToken(token);
+        const result = await getById(req.params.id)
+        result.username = user.username
         res.status(200).send({
             success: true,
             result: result
+            
         });
     } catch (err) {
         res.status(400).send({

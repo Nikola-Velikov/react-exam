@@ -1,6 +1,5 @@
 const Blog = require("../models/blog");
 const Comments = require("../models/comments");
-//const Comments = require("../models/comments");
 
 async function getAll() {
     return await Blog.find({});

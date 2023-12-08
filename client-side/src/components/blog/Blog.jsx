@@ -2,8 +2,24 @@ import { Button, Form } from "react-bootstrap";
 import useForm from "../../hooks/useForm";
 import * as blogService from "../../services/blogService";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { BlogCard } from "./blogCard";
 export function Blog() {
   const navigate = useNavigate();
+const [blogs, setBlogs] = useState([])
+
+useEffect(() => {
+  const getAll = async () => {
+    try {
+      setBlogs(await blogService.getAll());
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+  getAll();
+}, []);
+
+console.log(blogs);
   const onBlogSubmitHandler = async (values, e) => {
     try {
       const formData = new FormData();
@@ -42,74 +58,26 @@ export function Blog() {
           </div>
         </div>
       </div>
-      <div className="single-services">
+      <div className="single-services" style={{marginTop:'10px'}}>
         <div className="container">
           <div className="row">
             <div className="col-md-8">
               <section className="tabs-content">
-                <article id="tabs-1">
-                  <img src="assets/images/blog-image-1-940x460.jpg" alt="" />
-                  <h4>
-                    <a href="blog-details.html">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing.
-                    </a>
-                  </h4>
-                  <div style={{ marginBottom: 10 }}>
-                    <span>
-                      John Doe &nbsp;|&nbsp; 27.07.2020 10:10 &nbsp;|&nbsp; 15
-                      comments
-                    </span>
-                  </div>
-                  <p>
-                    Sed ut dolor in augue cursus ultrices. Vivamus mauris
-                    turpis, auctor vel facilisis in, tincidunt vel diam. Sed
-                    vitae scelerisque orci. Nunc non magna orci. Aliquam commodo
-                    mauris ante, quis posuere nibh vestibulum sit amet.
-                  </p>
-                  <br />
-                  <div>
-                    <a href="blog-details.html" className="filled-button">
-                      Continue Reading
-                    </a>
-                  </div>
-                </article>
-                <br />
-                <br />
-                <br />
-                <article id="tabs-2">
-                  <img src="assets/images/blog-image-2-940x460.jpg" alt="" />
-                  <h4>
-                    <a href="blog-details.html">
-                      Mauris lobortis quam id dictum dignissim
-                    </a>
-                  </h4>
-                  <div style={{ marginBottom: 10 }}>
-                    <span>
-                      John Doe &nbsp;|&nbsp; 27.07.2020 10:10 &nbsp;|&nbsp; 15
-                      comments
-                    </span>
-                  </div>
-                  <p>
-                    Sed ut dolor in augue cursus ultrices. Vivamus mauris
-                    turpis, auctor vel facilisis in, tincidunt vel diam. Sed
-                    vitae scelerisque orci. Nunc non magna orci. Aliquam commodo
-                    mauris ante, quis posuere nibh vestibulum sit amet
-                  </p>
-                  <br />
-                  <div>
-                    <a href="blog-details.html" className="filled-button">
-                      Continue Reading
-                    </a>
-                  </div>
-                </article>
+
+              {blogs.length === 0 && (
+            <h3 className="fst-italic text-secondary fs-5" style={{textAlign:'center'}}>No offers avaliable</h3>
+        )}
+                {blogs.map(blog => (
+              <BlogCard key={blog._id} {...blog}></BlogCard>
+            ))}
+               
+                
               </section>
             </div>
           </div>
         </div>
       </div>
-      <br />
-
-      <br />
+     
       <Form validated={validated} noValidate onSubmit={onSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label style={{ textAlign: "center", display: "block" }}>
