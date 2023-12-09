@@ -31,7 +31,9 @@ export function Catalog() {
         </div>
       </div>
       {cars.length === 0 && (
-            <h3 className="fst-italic text-secondary fs-5" style={{textAlign:'center'}}>No offers avaliable</h3>
+            <i>
+            <h3 style={{textAlign:"center"}}>No offers avaliable. Be the first to create!</h3>
+          </i>
         )}
       <div className="services">
         <div className="container">

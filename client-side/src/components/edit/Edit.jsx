@@ -185,13 +185,15 @@ export function Edit(){
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label> New Image</Form.Label>
+          <Form.Label style={{ textAlign: "center", display: "block" }}> New Image</Form.Label>
           <Form.Control
             type="file"
-            placeholder="Enter Url"
+            placeholder="Enter car image"
             name="image"
             onChange={onFileChange}
             required
+             style={{ width: "40rem", margin: "0 auto" }}
+
           />
 
           

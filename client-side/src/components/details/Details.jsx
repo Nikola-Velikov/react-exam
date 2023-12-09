@@ -11,7 +11,7 @@ import { Comment } from "./comment/Comment";
 export function Details() {
   const user = useContext(AuthContext);
   const { id } = useParams();
-  const [offer, setOffer] = useState({comments:[]});
+  const [offer, setOffer] = useState({ comments: [] });
   const navigate = useNavigate();
 
   const [show, setShow] = useState(false);
@@ -26,7 +26,7 @@ export function Details() {
       })
       .catch((err) => {});
   }, []);
-  
+
   const commentSubmitHandler = async (values) => {
     try {
       const comment = await carService.createComment(id, values);
@@ -48,16 +48,16 @@ export function Details() {
   );
   const commentDeleteHandler = async (id) => {
     try {
-        await carService.deleteComment(id);
-      
-        setOffer(current => ({
-            ...current,
-            comments: current.comments.filter(el => el._id != id)
-        }))
+      await carService.deleteComment(id);
+
+      setOffer((current) => ({
+        ...current,
+        comments: current.comments.filter((el) => el._id != id),
+      }));
     } catch (err) {
-        console.log(err.message);
+      console.log(err.message);
     }
-}
+  };
   const deleteOfferHandler = () => {
     carService
       .deleteOffer(id)
@@ -66,10 +66,11 @@ export function Details() {
   };
   return (
     <>
-    
       <div
         className="page-heading header-text"
-        style={{ backgroundImage: `url('http://localhost:3000/uploads/${offer.carImage}')` }}
+        style={{
+          backgroundImage: `url('http://localhost:3000/uploads/${offer.carImage}')`,
+        }}
       >
         <div className="container">
           <div className="row">
@@ -183,7 +184,14 @@ export function Details() {
           <br />
         </div>
       </div>
-      <h2 className="ms-5">Comment Section</h2>
+      <div className="callback-form contact-us">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="section-heading">
+                  <h2>
+                    Leave a <em>comment</em>
+                  </h2>
       <section className="comment-section ms-3 mb-3 pt-3">
         <Form
           className="mb-3"
@@ -193,6 +201,7 @@ export function Details() {
         >
           <Form.Group className="mb-3">
             <Form.Control
+              style={{ width: "40rem", margin: "0 auto" }}
               as="textarea"
               rows={3}
               placeholder="Place your comment.... "
@@ -205,7 +214,11 @@ export function Details() {
               Please fill out this field.
             </Form.Control.Feedback>
           </Form.Group>
-          <Button variant="dark" type="submit">
+          <Button
+            variant="dark"
+            type="submit"
+            style={{ display: "flex", margin: "0 auto" }}
+          >
             Comment
           </Button>
         </Form>
@@ -225,13 +238,18 @@ export function Details() {
           />
         ))}
       </section>
+</div>
+</div>
+</div>
+</div>
+</div>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Are you sure?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Are you sure? All the data for this board game will be permanently
+          Are you sure? All the data for this offer will be permanently
           deleted! There is no going back!
         </Modal.Body>
         <Modal.Footer>

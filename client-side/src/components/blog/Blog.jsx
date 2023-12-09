@@ -134,15 +134,17 @@ console.log(blogs);
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>Image</Form.Label>
+          <Form.Label style={{ textAlign: "center", display: "block" }}>Image</Form.Label>
           <Form.Control
+            style={{ width: "40rem", margin: "0 auto" }}
+
             type="file"
             placeholder="Enter Url"
             name="image"
             onChange={onFileChange}
             required
           />
-          <Form.Control.Feedback type="invalid">
+          <Form.Control.Feedback type="invalid" style={{ textAlign: "center" }}>
             Provide a image.
           </Form.Control.Feedback>
         </Form.Group>

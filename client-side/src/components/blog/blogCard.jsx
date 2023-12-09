@@ -36,6 +36,9 @@ export function BlogCard({
                       Continue Reading
                     </Link>
                   </div>
+                  <br />
+                  <br />
                 </article>
+                
     )
 }

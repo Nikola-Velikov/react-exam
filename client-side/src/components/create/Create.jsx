@@ -184,20 +184,23 @@ export default function Create() {
             name="telephone"
             onChange={onChange}
             value={values.telephone}
-            required style={{ width: "40rem", margin: "0 auto" }}
+            required 
+            style={{ width: "40rem", margin: "0 auto" }}
           />
           <Form.Control.Feedback style={{ textAlign: "center" }} type="invalid">
             Provide a telephone.
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>Image</Form.Label>
+          <Form.Label style={{ textAlign: "center", display: "block" }}> Image</Form.Label>
           <Form.Control
             type="file"
             placeholder="Enter Url"
             name="image"
             onChange={onFileChange}
             required
+            style={{ width: "40rem", margin: "0 auto" }}
+
           />
 
           

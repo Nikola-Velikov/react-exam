@@ -150,9 +150,9 @@ navigate('/')
         ))}
       </div>
       {data.offers.length === 0 && (
-        <h3 className="fst-italic text-secondary fs-5">
-          You don't have any offers yet. Add your first one!
-        </h3>
+        <i>
+        <h3 style={{textAlign:"center"}}>No offers yet. Create your first one!</h3>
+      </i>
       )}
 
       <h2 className="mt-3 mb-5 text-center">Blogs added by you</h2>
@@ -162,9 +162,9 @@ navigate('/')
         ))}
       </div>
       {data.blogs.length === 0 && (
-        <h3 className="fst-italic text-secondary fs-5">
-          You don't have any blogs yet. Add your first one!
-        </h3>
+        <i>
+        <h3 style={{textAlign:"center"}}>No blogs yet. Create your first one!</h3>
+      </i>
       )}
 
 <Modal show={show} onHide={handleClose}>
