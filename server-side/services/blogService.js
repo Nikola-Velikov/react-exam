@@ -5,8 +5,8 @@ async function getAll() {
     return await Blog.find({});
 }
 
-async function create(boardgame) {
-    return await Blog.create(boardgame);
+async function create(blog) {
+    return await Blog.create(blog);
 }
 
 

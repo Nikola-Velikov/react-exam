@@ -7,8 +7,8 @@ async function getAll() {
   return await Cars.find({});
 }
 
-async function create(boardgame) {
-  return await Cars.create(boardgame);
+async function create(offer) {
+  return await Cars.create(offer);
 }
 
 async function update(id, offer) {

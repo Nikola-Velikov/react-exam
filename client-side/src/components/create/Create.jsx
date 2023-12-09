@@ -56,7 +56,7 @@ export default function Create() {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1>Create</h1>
+              <h1>Create offer</h1>
               <span>
                 Create your offer right now and you can make some money :)
               </span>

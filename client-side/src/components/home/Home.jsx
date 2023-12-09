@@ -3,23 +3,19 @@ import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <>
-
-
       <div className="main-banner header-text" id="top">
         <div className="Modern-Slider">
           <div className="item item-1">
             <div className="img-fill">
               <div className="text-content">
-                <h6>lorem ipsum dolor sit amet!</h6>
-                <h4>
-                  Quam temporibus accusam <br /> hic ducimus quia
-                </h4>
+                <h6>Car dealers website</h6>
+                <h4>Car Shopy</h4>
                 <p>
-                  Magni deserunt dolorem consectetur adipisicing elit. Corporis
-                  molestiae optio, laudantium odio quod rerum maiores, omnis
-                  unde quae illo.
+                  Car Shopy, your premier destination for quality cars and
+                  exceptional service, where experience meets reliability in
+                  every vehicle.
                 </p>
-                <Link to={'/catalog'} className="filled-button">
+                <Link to={"/catalog"} className="filled-button">
                   Cars
                 </Link>
               </div>

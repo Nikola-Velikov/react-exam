@@ -77,7 +77,7 @@ export function Navbar() {
               {isAuthenticated && (
                 <li className="nav-item">
                   <Link to={"/create"} className="nav-link">
-                    Create
+                    Create offer
                   </Link>
                 </li>
               )}
