@@ -29,8 +29,11 @@ console.log(blogs);
       formData.append("image",values.image);
 
       console.log(formData.get("image"));
-      await blogService.create(formData);
-
+   const blog =   await blogService.create(formData);
+      setBlogs((current) => ([
+        ...current,
+       blog
+      ]));
       //navigate("/catalog");
     } catch (err) {
       console.log(err.message);
