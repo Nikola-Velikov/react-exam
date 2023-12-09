@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import useForm from "../../hooks/useForm";
 import AuthContext from "../../context/authContext.jsx";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Modal } from "react-bootstrap";
 import * as authService from "../../services/authService";
 
 import { useNavigate } from "react-router-dom";
@@ -94,6 +94,8 @@ export default function EditProfile() {
                     Change Password
                 </Button>
             </Form>
+
+          
         </>
     )
 }

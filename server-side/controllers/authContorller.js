@@ -1,4 +1,4 @@
-const { register, getAllUsers, getUserById, login, getById,updateProfile, changePassword } = require('../services/authService');
+const { register, getAllUsers, getUserById, login, getById,updateProfile, changePassword, deleteById, verifyToken } = require('../services/authService');
 const authContoller = require('express').Router();
 
 
@@ -89,5 +89,24 @@ authContoller.post('/users/:id/changepass', async (req, res) => {
         })
     }
 });
+authContoller.get('/:id/delete', async (req, res) => {
+   
+    try {
+        console.log(req.params.id);
+        const token = req.headers["x-authorization"];
+        verifyToken(token);
+        const result = await deleteById(req.params.id);
+        res.status(200).send({
+            success: true,
+            result: result
+        });
+    } catch (err) {
+        res.status(400).send({
+            success: false,
+            error: err.message
+        })
+    }
+});
+
 
 module.exports = authContoller;

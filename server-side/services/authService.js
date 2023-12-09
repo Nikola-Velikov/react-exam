@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Comments = require('../models/comments.js');
 const Blog = require('../models/blog.js');
+const Cars = require('../models/cars.js');
 
 
 
@@ -114,6 +115,14 @@ async function changePassword(id, req){
     return await user.save();
 }
 
+async function deleteById(id) {
+    await User.findOneAndDelete({ _id: id });
+    await Comments.deleteMany({ userId: id});
+    await Blog.deleteMany({ userId: id});
+    return  await Cars.deleteMany({ owner: id});
+    
+
+  }
 module.exports = {
     register: register,
     getAllUsers: getAllUsers,
@@ -122,5 +131,6 @@ module.exports = {
     verifyToken:verifyToken,
     getById: getById,
     updateProfile: updateProfile,
-    changePassword:changePassword
+    changePassword:changePassword,
+    deleteById: deleteById
 }

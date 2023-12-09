@@ -30,3 +30,8 @@ export const updateUser = async (id, payload) => {
         email: payload.get('email'),
     });
 }
+
+export const deleteUser = async (id) => {
+    const res = await request.get(baseUrl + "/" + id + "/delete");
+    return res;
+  };
