@@ -85,8 +85,9 @@ carController.get('/:id', async (req, res) => {
     console.log('GET /games/:id');
     try {
         const token = req.headers["x-authorization"];
-        verifyToken(token);
+      verifyToken(token);
         const result = await getById(req.params.id);
+        
         res.status(200).send({
             success: true,
             result: result

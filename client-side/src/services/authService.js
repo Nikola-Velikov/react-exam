@@ -19,3 +19,14 @@ export const getOne = async (id) => {
     const result = await request.get(baseUrl + '/' + id);
     return result;
 }
+
+export const changePassword = async (id, payload) => {
+    return await request.post(baseUrl + '/users/' + id + '/changepass', payload);
+}
+
+export const updateUser = async (id, payload) => {
+    return await request.post(baseUrl + '/users/' + id + '/edit',{
+        username: payload.get('username'),
+        email: payload.get('email'),
+    });
+}

@@ -65,6 +65,7 @@ blogController.get('/:id', async (req, res) => {
     try {
         const token = req.headers["x-authorization"];
        let user =  verifyToken(token);
+       
         const result = await getById(req.params.id)
         result.username = user.username
         res.status(200).send({

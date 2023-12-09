@@ -1,6 +1,8 @@
 const User = require('../models/users.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const Comments = require('../models/comments.js');
+const Blog = require('../models/blog.js');
 
 
 
@@ -72,6 +74,45 @@ async function getById(id) {
     return User.findById(id).lean();
 }
 
+async function updateProfile(id, user) {
+    const existing = await User.findById(id);
+
+    if(!existing){
+        throw new Error("User doesn't exist");
+    }
+
+    existing.username = user.username;
+    existing.email = user.email;
+   
+
+    const comments = Comments.find({userId: id});
+    await comments.updateMany({ userId: id }, {
+        $set: {
+            username: user.username,
+        }
+    });
+    const blogs = Blog.find({userId: id});
+    await blogs.updateMany({ userId: id }, {
+        $set: {
+            username: user.username,
+        }
+    });
+    const updatedUser = await existing.save();
+
+    return createSession(updatedUser);
+}
+
+async function changePassword(id, req){
+    const user = await User.findById(id);
+    const match = await bcrypt.compare(req.oldPassword, user.hashedPassword);
+    if (!match) {
+        throw new Error('Old password doesn\'t match');
+    }
+    
+    user.hashedPassword = await bcrypt.hash(req.newPassword, 10);
+    
+    return await user.save();
+}
 
 module.exports = {
     register: register,
@@ -79,5 +120,7 @@ module.exports = {
     getUserById: getUserById,
     login: login,
     verifyToken:verifyToken,
-    getById: getById
+    getById: getById,
+    updateProfile: updateProfile,
+    changePassword:changePassword
 }

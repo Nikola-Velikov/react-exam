@@ -9,7 +9,7 @@ export function Navbar() {
     <header className="">
       <nav className="navbar navbar-expand-lg">
         <div className="container">
-          <Link to={'/'} className="navbar-brand">
+          <Link to={"/"} className="navbar-brand">
             <h2>
               Car<em> Shopy</em>
             </h2>
@@ -44,12 +44,20 @@ export function Navbar() {
                 </Link>
               </li>
               {isAuthenticated && (
-
-              <li className="nav-item">
-                <Link to={'/blog'} className="nav-link">Blog</Link>
-              </li>
+                <li className="nav-item">
+                  <Link to={"/blog"} className="nav-link">
+                    Blog
+                  </Link>
+                </li>
               )}
-              
+
+              {isAuthenticated && (
+                <li className="nav-item">
+                  <Link to={"/profile/"+userId} className="nav-link">
+                    Profile
+                  </Link>
+                </li>
+              )}
 
               {!isAuthenticated && (
                 <li className="nav-item">
@@ -60,26 +68,24 @@ export function Navbar() {
               )}
               {isAuthenticated && (
                 <li className="nav-item">
-                <Link to={"/create"} className="nav-link">
-                  Create
-                </Link>
-              </li>
+                  <Link to={"/create"} className="nav-link">
+                    Create
+                  </Link>
+                </li>
               )}
-            {isAuthenticated && (
-              
-              <li className="nav-item">
-              <Link to={"/logout"} className="nav-link">
-                Logout
-              </Link>
-            </li>
-            )}
+              {isAuthenticated && (
+                <li className="nav-item">
+                  <Link to={"/logout"} className="nav-link">
+                    Logout
+                  </Link>
+                </li>
+              )}
             </ul>
             {!isAuthenticated && (
               <Button to={"/register"} className="btn btn-dark ms-2" as={Link}>
                 Register
               </Button>
             )}
-             
           </div>
         </div>
       </nav>

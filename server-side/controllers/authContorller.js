@@ -1,4 +1,4 @@
-const { register, getAllUsers, getUserById, login, getById } = require('../services/authService');
+const { register, getAllUsers, getUserById, login, getById,updateProfile, changePassword } = require('../services/authService');
 const authContoller = require('express').Router();
 
 
@@ -53,5 +53,41 @@ authContoller.get('/users/:id', async (req, res) => {
     res.send({ success: true, result: user });
 });
 
+authContoller.post('/users/:id/edit', async (req, res) => {
+console.log(req.body);
+    try {
+        const payload = {
+            username: req.body.username,
+            email: req.body.email
+        }
+        const user = await updateProfile(req.params.id, payload);
+        res.send(JSON.stringify({
+            result: user,
+            success: true,
+        }));
+    } catch (err) {
+        console.log(err.message);
+        res.send(JSON.stringify({
+            success: false,
+            error: err.message,
+        }));
+    }
+});
+
+authContoller.post('/users/:id/changepass', async (req, res) => {
+   
+    try{ 
+        const result = await changePassword(req.params.id, req.body);
+        res.status(200).send({
+            success: true,
+            result: result
+        });
+    } catch (err) {
+        res.status(400).send({
+            success: false,
+            error: err.message
+        })
+    }
+});
 
 module.exports = authContoller;
