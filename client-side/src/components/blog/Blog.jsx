@@ -68,7 +68,7 @@ console.log(blogs);
               <section className="tabs-content">
 
               {blogs.length === 0 && (
-            <h3 className="fst-italic text-secondary fs-5" style={{textAlign:'center'}}>No offers avaliable</h3>
+            <h3 className="fst-italic text-secondary fs-5" style={{textAlign:'center'}}>No blogs avaliable</h3>
         )}
                 {blogs.map(blog => (
               <BlogCard key={blog._id} {...blog}></BlogCard>
