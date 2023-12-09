@@ -59,6 +59,14 @@ export function Navbar() {
                 </li>
               )}
 
+{isAuthenticated && (
+                <li className="nav-item">
+                  <Link to={"/meeting/"+userId} className="nav-link">
+                    Host meet
+                  </Link>
+                </li>
+              )}
+
               {!isAuthenticated && (
                 <li className="nav-item">
                   <Link to={"/login"} className="nav-link">

@@ -16,6 +16,8 @@ import { Blog } from "./components/blog/Blog";
 import { BlogDetails } from "./components/blogDetails/BlogDetails";
 import { Profile } from "./components/profile/Profile";
 import EditProfile from "./components/editProfile/EditProfile";
+import { Meeting } from "./components/meeting/Meeting";
+import { JitsiMeeting } from '@jitsi/react-sdk';
 function App() {
   return (
     <>
@@ -43,6 +45,7 @@ function App() {
         <Route path="/blog/:id" element={<BlogDetails />} />
         <Route path="/profile/:id" element={<Profile />} />
         <Route path="/profile/edit" element={<EditProfile />} />
+        <Route path="/meeting/:id" element={<Meeting />} />
 
 
 
