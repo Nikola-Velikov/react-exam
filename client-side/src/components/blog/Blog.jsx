@@ -56,7 +56,7 @@ console.log(blogs);
           <div className="row">
             <div className="col-md-12">
               <h1>Read our Blog</h1>
-              <span>Lorem ipsum dolor sit amet consectetur</span>
+            
             </div>
           </div>
         </div>
@@ -69,6 +69,7 @@ console.log(blogs);
 
               {blogs.length === 0 && (
             <h3 className="fst-italic text-secondary fs-5" style={{textAlign:'center'}}>No blogs avaliable</h3>
+            
         )}
                 {blogs.map(blog => (
               <BlogCard key={blog._id} {...blog}></BlogCard>
