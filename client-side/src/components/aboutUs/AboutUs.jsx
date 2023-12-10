@@ -31,8 +31,6 @@ export function AboutUs() {
                         dealership. Our commitment to honesty, integrity, and
                         customer satisfaction has made us a trusted name in the
                         community.
-                        
-                       
                       </p>
                     </div>
                   </div>

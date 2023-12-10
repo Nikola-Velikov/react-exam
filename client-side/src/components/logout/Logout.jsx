@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import AuthContext from "../../context/authContext";
 
 export default function Logout() {
-    const navigate = useNavigate();
-    const { logoutHandler, isAuthenticated } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { logoutHandler, isAuthenticated } = useContext(AuthContext);
 
-    useEffect(() => {
-        if(isAuthenticated){
-            logoutHandler();
-            navigate('/');
-        }
-    }, [])
+  useEffect(() => {
+    if (isAuthenticated) {
+      logoutHandler();
+      navigate("/");
+    }
+  }, []);
 }

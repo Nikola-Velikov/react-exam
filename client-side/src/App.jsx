@@ -46,6 +46,7 @@ function App() {
         <Route path="/profile/:id" element={<Profile />} />
         <Route path="/profile/edit" element={<EditProfile />} />
         <Route path="/meeting/:id" element={<Meeting />} />
+        <Route path="/*" element={<Home />} />
 
 
 

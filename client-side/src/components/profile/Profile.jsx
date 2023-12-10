@@ -30,9 +30,9 @@ export function Profile() {
   const deleteUserHandler = () => {
     authService
       .deleteUser(user.userId)
-      .then((result) =>{
-        user.logoutHandler()
-navigate('/')
+      .then((result) => {
+        user.logoutHandler();
+        navigate("/");
       })
       .catch((err) => console.log(err));
   };
@@ -110,7 +110,6 @@ navigate('/')
                             {user.email}
                           </MDBCardText>
                           <Link to={"/profile/edit"}>
-                            
                             <Pencil
                               className="me-1"
                               style={{ color: "green" }}
@@ -124,14 +123,12 @@ navigate('/')
                             >
                               Edit
                             </span>
-                         
                           </Link>
                           <div onClick={handleShow}>
-                            
-                          <Trash className="me-1" style={{ color: "red" }} />
-                          <span style={{ color: "black", marginLeft: "5px" }}>
-                            Delete
-                          </span>
+                            <Trash className="me-1" style={{ color: "red" }} />
+                            <span style={{ color: "black", marginLeft: "5px" }}>
+                              Delete
+                            </span>
                           </div>
                         </MDBCol>
                       </MDBRow>
@@ -151,8 +148,10 @@ navigate('/')
       </div>
       {data.offers.length === 0 && (
         <i>
-        <h3 style={{textAlign:"center"}}>No offers yet. Create your first one!</h3>
-      </i>
+          <h3 style={{ textAlign: "center" }}>
+            No offers yet. Create your first one!
+          </h3>
+        </i>
       )}
 
       <h2 className="mt-3 mb-5 text-center">Blogs added by you</h2>
@@ -163,11 +162,13 @@ navigate('/')
       </div>
       {data.blogs.length === 0 && (
         <i>
-        <h3 style={{textAlign:"center"}}>No blogs yet. Create your first one!</h3>
-      </i>
+          <h3 style={{ textAlign: "center" }}>
+            No blogs yet. Create your first one!
+          </h3>
+        </i>
       )}
 
-<Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Are you sure?</Modal.Title>
         </Modal.Header>

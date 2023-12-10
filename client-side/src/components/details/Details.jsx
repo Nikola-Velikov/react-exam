@@ -185,72 +185,72 @@ export function Details() {
         </div>
       </div>
       <div className="callback-form contact-us">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12">
-                <div className="section-heading">
-                  <h2>
-                    Leave a <em>comment</em>
-                  </h2>
-      <section className="comment-section ms-3 mb-3 pt-3">
-        <Form
-          className="mb-3"
-          onSubmit={onSubmit}
-          validated={validated}
-          noValidate
-        >
-          <Form.Group className="mb-3">
-            <Form.Control
-              style={{ width: "40rem", margin: "0 auto" }}
-              as="textarea"
-              rows={3}
-              placeholder="Place your comment.... "
-              name="content"
-              onChange={onChange}
-              value={values.content}
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              Please fill out this field.
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Button
-            variant="dark"
-            type="submit"
-            style={{ display: "flex", margin: "0 auto" }}
-          >
-            Comment
-          </Button>
-        </Form>
-        {offer.comments.length === 0 ? (
-          <i>
-            <h3>No comments yet. Be the first one!</h3>
-          </i>
-        ) : (
-          ""
-        )}
-        {offer.comments.map((comment) => (
-          <Comment
-            comment={comment}
-            commentDeleteHandler={commentDeleteHandler}
-            userId={user.userId}
-            key={comment._id}
-          />
-        ))}
-      </section>
-</div>
-</div>
-</div>
-</div>
-</div>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="section-heading">
+                <h2>
+                  Leave a <em>comment</em>
+                </h2>
+                <section className="comment-section ms-3 mb-3 pt-3">
+                  <Form
+                    className="mb-3"
+                    onSubmit={onSubmit}
+                    validated={validated}
+                    noValidate
+                  >
+                    <Form.Group className="mb-3">
+                      <Form.Control
+                        style={{ width: "40rem", margin: "0 auto" }}
+                        as="textarea"
+                        rows={3}
+                        placeholder="Place your comment.... "
+                        name="content"
+                        onChange={onChange}
+                        value={values.content}
+                        required
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        Please fill out this field.
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                    <Button
+                      variant="dark"
+                      type="submit"
+                      style={{ display: "flex", margin: "0 auto" }}
+                    >
+                      Comment
+                    </Button>
+                  </Form>
+                  {offer.comments.length === 0 ? (
+                    <i>
+                      <h3>No comments yet. Be the first one!</h3>
+                    </i>
+                  ) : (
+                    ""
+                  )}
+                  {offer.comments.map((comment) => (
+                    <Comment
+                      comment={comment}
+                      commentDeleteHandler={commentDeleteHandler}
+                      userId={user.userId}
+                      key={comment._id}
+                    />
+                  ))}
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Are you sure?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Are you sure? All the data for this offer will be permanently
-          deleted! There is no going back!
+          Are you sure? All the data for this offer will be permanently deleted!
+          There is no going back!
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

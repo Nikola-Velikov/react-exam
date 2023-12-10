@@ -6,34 +6,31 @@ import { useEffect, useState } from "react";
 import { BlogCard } from "./blogCard";
 export function Blog() {
   const navigate = useNavigate();
-const [blogs, setBlogs] = useState([])
+  const [blogs, setBlogs] = useState([]);
 
-useEffect(() => {
-  const getAll = async () => {
-    try {
-      setBlogs(await blogService.getAll());
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
-  getAll();
-}, []);
+  useEffect(() => {
+    const getAll = async () => {
+      try {
+        setBlogs(await blogService.getAll());
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    getAll();
+  }, []);
 
-console.log(blogs);
+  console.log(blogs);
   const onBlogSubmitHandler = async (values, e) => {
     try {
       const formData = new FormData();
       formData.append("title", values.title);
       formData.append("shortcont", values.shortcont);
       formData.append("context", values.context);
-      formData.append("image",values.image);
+      formData.append("image", values.image);
 
       console.log(formData.get("image"));
-   const blog =   await blogService.create(formData);
-      setBlogs((current) => ([
-        ...current,
-       blog
-      ]));
+      const blog = await blogService.create(formData);
+      setBlogs((current) => [...current, blog]);
       //navigate("/catalog");
     } catch (err) {
       console.log(err.message);
@@ -43,7 +40,7 @@ console.log(blogs);
   const { values, onChange, onSubmit, validated, onFileChange } = useForm(
     onBlogSubmitHandler,
     {
-      image: '',
+      image: "",
       title: "",
       shortcont: "",
       context: "",
@@ -56,32 +53,32 @@ console.log(blogs);
           <div className="row">
             <div className="col-md-12">
               <h1>Read our Blog</h1>
-            
             </div>
           </div>
         </div>
       </div>
-      <div className="single-services" style={{marginTop:'10px'}}>
+      <div className="single-services" style={{ marginTop: "10px" }}>
         <div className="container">
           <div className="row">
             <div className="col-md-8">
               <section className="tabs-content">
-
-              {blogs.length === 0 && (
-            <h3 className="fst-italic text-secondary fs-5" style={{textAlign:'center'}}>No blogs avaliable</h3>
-            
-        )}
-                {blogs.map(blog => (
-              <BlogCard key={blog._id} {...blog}></BlogCard>
-            ))}
-               
-                
+                {blogs.length === 0 && (
+                  <h3
+                    className="fst-italic text-secondary fs-5"
+                    style={{ textAlign: "center" }}
+                  >
+                    No blogs avaliable
+                  </h3>
+                )}
+                {blogs.map((blog) => (
+                  <BlogCard key={blog._id} {...blog}></BlogCard>
+                ))}
               </section>
             </div>
           </div>
         </div>
       </div>
-     
+
       <Form validated={validated} noValidate onSubmit={onSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label style={{ textAlign: "center", display: "block" }}>
@@ -124,7 +121,7 @@ console.log(blogs);
           <Form.Control
             type="text"
             style={{ width: "40rem", margin: "0 auto" }}
-            placeholder="Enter short description"
+            placeholder="Enter description"
             value={values.context}
             onChange={onChange}
             name="context"
@@ -135,10 +132,11 @@ console.log(blogs);
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label style={{ textAlign: "center", display: "block" }}>Image</Form.Label>
+          <Form.Label style={{ textAlign: "center", display: "block" }}>
+            Image
+          </Form.Label>
           <Form.Control
             style={{ width: "40rem", margin: "0 auto" }}
-
             type="file"
             placeholder="Enter Url"
             name="image"

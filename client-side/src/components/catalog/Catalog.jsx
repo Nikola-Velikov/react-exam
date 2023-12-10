@@ -25,23 +25,24 @@ export function Catalog() {
           <div className="row">
             <div className="col-md-12">
               <h1>Cars</h1>
-              <span>Lorem ipsum dolor sit amet.</span>
+           
             </div>
           </div>
         </div>
       </div>
       {cars.length === 0 && (
-            <i>
-            <h3 style={{textAlign:"center"}}>No offers avaliable. Be the first to create!</h3>
-          </i>
-        )}
+        <i>
+          <h3 style={{ textAlign: "center" }}>
+            No offers avaliable. Be the first to create!
+          </h3>
+        </i>
+      )}
       <div className="services">
         <div className="container">
           <div className="row">
-            {cars.map(car => (
+            {cars.map((car) => (
               <CarOffer key={car._id} {...car}></CarOffer>
             ))}
-          
           </div>
         </div>
       </div>
