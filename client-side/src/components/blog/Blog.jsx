@@ -82,7 +82,7 @@ export function Blog() {
       <Form validated={validated} noValidate onSubmit={onSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label style={{ textAlign: "center", display: "block" }}>
-            Email address
+            Title
           </Form.Label>
           <Form.Control
             type="text"

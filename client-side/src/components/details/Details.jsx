@@ -85,7 +85,7 @@ export function Details() {
                 &nbsp; <sup>$</sup>
                 {offer.price}
               </h1>
-              <span>Lorem ipsum dolor sit amet.</span>
+              
             </div>
           </div>
         </div>
